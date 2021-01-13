@@ -36,7 +36,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(600, 200);
+  createCanvas(windowWidth, windowHeight);
 
   var message = "This is a message";
  console.log(message)
@@ -102,9 +102,10 @@ function draw() {
     }
     
     //jump when the space key is pressed
-    if(keyDown("space")&& trex.y >= 100) {
+    if(touches.length>0||keyDown("space")&& trex.y >= 100) {
         trex.velocityY = -12;
         jumpSound.play();
+      touches=[];
     }
     
     //add gravity
