@@ -41,12 +41,12 @@ function setup() {
   var message = "This is a message";
  console.log(message)
   
-  trex = createSprite(30,160,20,50);
+  trex = createSprite(50,160,20,50);
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
   
 
-  trex.scale = 0.2;
+  trex.scale = 0.5;
   
   ground = createSprite(200,180,400,20);
   ground.addImage("ground",groundImage);
@@ -125,11 +125,10 @@ function draw() {
       
     }
   }
-   else if (gameState === END && touches.length>0) {
+   else if (gameState === END) {
       gameOver.visible = true;
       restart.visible = true;
-     
-     //change the trex animation
+    //change the trex animation
       trex.changeAnimation("collided", trex_collided);
     
      
@@ -146,7 +145,11 @@ function draw() {
      cloudsGroup.setVelocityXEach(0);    
    }
   
- 
+  if(touches.length>0){
+       gameState =PLAY;
+    touches=[];
+  }
+     
   //stop trex from falling down
   trex.collide(invisibleGround);
   
