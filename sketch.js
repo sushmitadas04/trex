@@ -125,7 +125,7 @@ function draw() {
       
     }
   }
-   else if (gameState === END) {
+   else if (gameState === END && touches.length>0) {
       gameOver.visible = true;
       restart.visible = true;
      
